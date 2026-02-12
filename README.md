@@ -23,7 +23,7 @@ This project implements basic e-commerce functionality: users, products, categor
 
 1. **Clone the repository**
    ```bash
-   git clone https://github.com/yourusername/your-repo-name.git
+   git clone https://github.com/Kostasus/ecommerce_test_project.git
    cd your-repo-name
    ```
 
