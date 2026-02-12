@@ -1,0 +1,49 @@
+# Виртуальное окружение
+.venv/
+venv/
+env/
+ENV/
+
+# Файлы базы данных
+*.db
+*.sqlite
+*.sqlite3
+*.db-journal
+
+# Локальные конфигурации и секреты
+.env
+.env.local
+.env.*.local
+
+# Кэш Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# Директории среда разработки
+.vscode/
+.idea/
+.vs/
+*.swp
+*.swo
+*~
+
+# Alembic — игнорируем только кэш внутри versions
+app/migrations/versions/__pycache__/
+app/migrations/__pycache__/
+
+# Логи
+*.log
+
+# Сборки / дистрибутивы
+dist/
+build/
+*.egg-info/
+
+# Файлы ОС
+.DS_Store
+Thumbs.db
