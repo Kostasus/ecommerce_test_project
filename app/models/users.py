@@ -20,3 +20,6 @@ class User(Base):
     cart_items: Mapped[list["CartItem"]] = relationship(  # type: ignore # noqa
         "CartItem", back_populates="user", cascade="all, delete-orphan"
     )
+    orders: Mapped[list["Order"]] = relationship(  # type: ignore # noqa
+        "Order", back_populates="user", cascade="all, delete-orphan"
+    )
