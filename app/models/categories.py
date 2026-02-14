@@ -10,9 +10,11 @@ class Category(Base):
     id: Mapped[int] = mapped_column(primary_key=True)
     name: Mapped[str] = mapped_column(String(50), nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
-    parent_id: Mapped[int] = mapped_column(ForeignKey("categories.id"), nullable=True)
+    parent_id: Mapped[int] = mapped_column(
+        ForeignKey("categories.id"), nullable=True, index=True
+    )
 
-    products: Mapped[list["Product"]] = relationship(  # type: ignore #noqa
+    products: Mapped[list["Product"]] = relationship(  # type: ignore # noqa
         "Product", back_populates="category"
     )
 

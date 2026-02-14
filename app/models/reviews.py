@@ -21,8 +21,8 @@ class Review(Base):
     grade: Mapped[Integer] = mapped_column(Integer, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
 
-    buyer: Mapped["User"] = relationship("User", back_populates="reviews")  # type: ignore #noqa
-    product: Mapped["Product"] = relationship("Product", back_populates="reviews")  # type: ignore #noqa
+    buyer: Mapped["User"] = relationship("User", back_populates="reviews")  # type: ignore # noqa
+    product: Mapped["Product"] = relationship("Product", back_populates="reviews")  # type: ignore # noqa
 
     __table_args__ = (
         CheckConstraint("grade >= 1 AND grade <= 5", name="check_grade_range"),

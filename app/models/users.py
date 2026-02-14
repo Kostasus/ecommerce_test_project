@@ -15,5 +15,8 @@ class User(Base):
         String, default="buyer"
     )  # "buyer", "seller" or "admin"
 
-    products: Mapped[list["Product"]] = relationship("Product", back_populates="seller")  # type: ignore #noqa
-    reviews: Mapped[list["Review"]] = relationship("Review", back_populates="buyer")  # type: ignore #noqa
+    products: Mapped[list["Product"]] = relationship("Product", back_populates="seller")  # type: ignore # noqa
+    reviews: Mapped[list["Review"]] = relationship("Review", back_populates="buyer")  # type: ignore # noqa
+    cart_items: Mapped[list["CartItem"]] = relationship(  # type: ignore # noqa
+        "CartItem", back_populates="user", cascade="all, delete-orphan"
+    )

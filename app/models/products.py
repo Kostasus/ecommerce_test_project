@@ -29,9 +29,11 @@ class Product(Base):
     stock: Mapped[int] = mapped_column(Integer, nullable=False)
     is_active: Mapped[bool] = mapped_column(Boolean, default=True)
     category_id: Mapped[int] = mapped_column(
-        ForeignKey("categories.id"), nullable=False
+        ForeignKey("categories.id"), nullable=False, index=True
     )
-    seller_id: Mapped[int] = mapped_column(ForeignKey("users.id"), nullable=False)
+    seller_id: Mapped[int] = mapped_column(
+        ForeignKey("users.id"), nullable=False, index=True
+    )
     rating: Mapped[Decimal] = mapped_column(
         Numeric(2, 1), default=0.0, server_default="0"
     )
@@ -58,8 +60,11 @@ class Product(Base):
         nullable=False,
     )
 
-    category: Mapped["Category"] = relationship("Category", back_populates="products")  # type: ignore #noqa
-    seller: Mapped["User"] = relationship("User", back_populates="products")  # type: ignore #noqa
-    reviews: Mapped[list["Review"]] = relationship("Review", back_populates="product")  # type: ignore #noqa
+    category: Mapped["Category"] = relationship("Category", back_populates="products")  # type: ignore # noqa
+    seller: Mapped["User"] = relationship("User", back_populates="products")  # type: ignore # noqa
+    reviews: Mapped[list["Review"]] = relationship("Review", back_populates="product")  # type: ignore # noqa
+    cart_items: Mapped[list["CartItem"]] = relationship(  # type: ignore # noqa
+        "CartItem", back_populates="product", cascade="all, delete-orphan"
+    )
 
     __table_args__ = (Index("ix_products_tsv_gin", "tsv", postgresql_using="gin"),)
