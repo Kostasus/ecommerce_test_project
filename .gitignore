@@ -47,3 +47,6 @@ build/
 # Файлы ОС
 .DS_Store
 Thumbs.db
+
+# Файлы media
+media/products/*
